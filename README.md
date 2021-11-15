@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 An employee would like to create a secure password but does not want to think of their own. That's where we come in. This is the password generator.
 
 The password generator will generate a randomized string of characters to set as your new password!
