@@ -1,5 +1,4 @@
 var criteria = function() {
-
   // prompt user for password length
   var passLength = parseInt(window.prompt("Please enter a password length between 8 and 128 characters"));
 
@@ -203,7 +202,7 @@ var generatePassword = function() {
   // 'Scramble' a password, returns randomized set of characters
   password = passwordScrambler(passwordCriteria);
 
-  window.alert("your password is: " + password);
+  return(password);
 }
 
 // Get references to the #generate element
