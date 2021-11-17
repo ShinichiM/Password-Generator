@@ -5,29 +5,25 @@ var criteria = function() {
   // If password length is not within 8-128 bounds, continuously prompt for correct length.
   // If password is null or empty, they did not enter a number for length or they refused and cancelled, continously ask for password length.
   // If they input a valid number, proceed for criteria prompts.
-  if (passLength < 8 || passLength > 128) {
-    window.alert("Please input a valid value between 8 and 128 inclusive.");
-    criteria();
-  }
-  if (!passLength){
-    window.alert("Please input a value between 8 and 128 inclusive.");
-    criteria();
-  } 
 
+  while (passLength < 8 || passLength > 128 || !passLength) {
+    passLength = window.alert("Please input a valid value between 8 and 128 inclusive.");
+    passLength = parseInt(window.prompt("Please enter a password length between 8 and 128 characters"));
+  }
+  
   // prompt user if they would like to include special characters.
   var confirmSpecial = window.confirm("Would you like to include special characters in your password?");
   if (confirmSpecial){
     window.alert("You have chosen to secure your password using special characters");
-  }else{
-    window.alert("We understand you would not like to include special characters");
+  } else {
+     window.alert("We understand you would not like to include special characters");
   }
-
 
   // prompt user if they would like to include uppercase characters.
   var confirmUpper = window.confirm("Would you like your password to include uppercase characters?");
   if (confirmUpper){
     window.alert("You have chosen to secure your password using uppercase characters");
-  }else{
+  } else {
     window.alert("We understand you would not like to include uppercase characters");
   }
 
@@ -35,7 +31,7 @@ var criteria = function() {
   var confirmLower = window.confirm("Would you like your password to include lowercase characters?");
   if (confirmLower){
     window.alert("You have chosen to secure your password using lower characters");
-  }else{
+  } else {
     window.alert("We understand you would not like to include lowercase characters");
   }
 
@@ -49,20 +45,19 @@ var criteria = function() {
 
   // Error handling, if user refused all criteria.
   if (!confirmSpecial && !confirmUpper && !confirmLower && !confirmNumber) {
-    window.alert("You did not choose a criteria. Please confirm at least one criteria.");
-    criteria();
+    window.alert("You did not choose a criteria. Please Try again later.");
+    return false;
   }
-
+   
   // object to hold password criteria values.
-  var passwordCriteria = {
-    len: passLength,
-    special: confirmSpecial,
-    upper: confirmUpper,
-    lower: confirmLower,
-    numeric: confirmNumber
-  };
-  
-  return(passwordCriteria);
+    var passwordCriteria = {
+      len: passLength,
+      special: confirmSpecial,
+      upper: confirmUpper,
+      lower: confirmLower,
+      numeric: confirmNumber
+    };
+    return(passwordCriteria);   
 }
 
 // Function that returns the index of the maximum number in an array
@@ -198,7 +193,7 @@ var passwordScrambler = function(passwordCriteria) {
 var generatePassword = function() {
   // Get password criteria from user prompts.
   var passwordCriteria = criteria();
-
+  
   // 'Scramble' a password, returns randomized set of characters
   password = passwordScrambler(passwordCriteria);
 
