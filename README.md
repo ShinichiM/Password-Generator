@@ -37,9 +37,9 @@ Anything with user input needs to be handled with caution as we never know what 
 #### How it Works
 - Once we obtain user input through ``` window.prompts() or window.confirms() ``` and store these inputs into a 'criteria' object for further processing.
 - The object then goes through the  ```passwordScrambler()``` that 'scrambles' or randomizes each character in the returned password.
-- ```passwordScrambler()``` contains multiple helper functions to scramble individual characters. It uses a pseudo ranking system that lowers the probability of a character type to 'win' a position in a string, this probability lowers dependending on the frequency of the character type used. 
+- ```passwordScrambler()``` contains multiple helper functions to scramble individual characters. It uses a pseudo ranking system that lowers the probability of a character type 'winning' a position in a string. This probability lowers dependending on the frequency of the character type used. 
 
-For example: We loop through each character or position in a string and pick the character type 'winner' and store a random character of that type into that position in a string. Afterwards, we should completely anihilate (in terms of probability) that character type as a choice for the next position. 
+For example: We loop through each character or position in a string and pick the character type, or 'winner', and store a random character of that type into the current position in a string. Afterwards, we anihilate (in terms of probability) that character type as a choice for the next position. 
 
 We store the frequency of the character type used and send it to ``` randomizeArray(Arr) ``` which returns an array of randomized numbers that correspond to each character type. (could also have used an object here for better readability).
 ```js
