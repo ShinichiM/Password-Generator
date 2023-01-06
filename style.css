@@ -49,7 +49,10 @@ header {
   background: #e7e9eb;
   height: 2px;
 }
-
+.display-flex {
+  display: flex;
+  justify-content: space-between;
+}
 .card-body {
   min-height: 100px;
 }
@@ -87,6 +90,9 @@ header {
   text-align: center;
   cursor: pointer;
 }
+.btn:hover {
+  background-color: hsl(360, 50%, 60%);
+}
 
 button[disabled] {
   cursor: default;
@@ -96,7 +102,27 @@ button[disabled] {
 .float-right {
   float: right;
 }
-
+.dropdown-btn {
+  background-color: hsl(360, 91%, 36%);
+  color: white;
+  line-height: 2rem;
+  cursor: pointer;
+}
+.dropdown-btn:hover {
+  background-color: hsl(360, 50%, 60%);
+}
+.dropdown {
+  position: relative;
+}
+.margin-0 {
+  margin: 0;
+}
+.dropdown-content {
+  display: none;
+}
+.show {
+  display: block
+}
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;

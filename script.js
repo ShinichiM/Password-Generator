@@ -1,70 +1,102 @@
-var criteria = function() {
+var criteria = function () {
   // prompt user for password length
-  var passLength = parseInt(window.prompt("Please enter a password length between 8 and 128 characters"));
+  var passLength = parseInt(
+    window.prompt("Please enter a password length between 8 and 128 characters")
+  );
 
   // If password length is not within 8-128 bounds, continuously prompt for correct length.
   // If password is null or empty, they did not enter a number for length or they refused and cancelled, continously ask for password length.
   // If they input a valid number, proceed for criteria prompts.
 
-  while (passLength < 8 || passLength > 128 || !passLength) {
-    passLength = window.alert("Please input a valid value between 8 and 128 inclusive.");
-    passLength = parseInt(window.prompt("Please enter a password length between 8 and 128 characters"));
-  }
-  
-  // prompt user if they would like to include special characters.
-  var confirmSpecial = window.confirm("Would you like to include special characters in your password?");
-  if (confirmSpecial){
-    window.alert("You have chosen to secure your password using special characters");
-  } else {
-     window.alert("We understand you would not like to include special characters");
-  }
+  // while (passLength < 8 || passLength > 128 || !passLength) {
+  //   passLength = window.alert(
+  //     "Please input a valid value between 8 and 128 inclusive."
+  //   );
+  //   passLength = parseInt(
+  //     window.prompt(
+  //       "Please enter a password length between 8 and 128 characters"
+  //     )
+  //   );
+  // }
 
-  // prompt user if they would like to include uppercase characters.
-  var confirmUpper = window.confirm("Would you like your password to include uppercase characters?");
-  if (confirmUpper){
-    window.alert("You have chosen to secure your password using uppercase characters");
-  } else {
-    window.alert("We understand you would not like to include uppercase characters");
-  }
+  // // prompt user if they would like to include special characters.
+  // var confirmSpecial = window.confirm(
+  //   "Would you like to include special characters in your password?"
+  // );
+  // if (confirmSpecial) {
+  //   window.alert(
+  //     "You have chosen to secure your password using special characters"
+  //   );
+  // } else {
+  //   window.alert(
+  //     "We understand you would not like to include special characters"
+  //   );
+  // }
 
-  // prompt user if they would like to include lowercase characters.
-  var confirmLower = window.confirm("Would you like your password to include lowercase characters?");
-  if (confirmLower){
-    window.alert("You have chosen to secure your password using lower characters");
-  } else {
-    window.alert("We understand you would not like to include lowercase characters");
-  }
+  // // prompt user if they would like to include uppercase characters.
+  // var confirmUpper = window.confirm(
+  //   "Would you like your password to include uppercase characters?"
+  // );
+  // if (confirmUpper) {
+  //   window.alert(
+  //     "You have chosen to secure your password using uppercase characters"
+  //   );
+  // } else {
+  //   window.alert(
+  //     "We understand you would not like to include uppercase characters"
+  //   );
+  // }
 
-  // prompt user if they would like to include numeric values.
-  var confirmNumber = window.confirm("Would you like to include numeric values for your password?");
-  if (confirmNumber){
-    window.alert("You have chosen to secure your password using numeric characters");
-  }else{
-    window.alert("We understand you would not like to include numeric characters");
-  }
+  // // prompt user if they would like to include lowercase characters.
+  // var confirmLower = window.confirm(
+  //   "Would you like your password to include lowercase characters?"
+  // );
+  // if (confirmLower) {
+  //   window.alert(
+  //     "You have chosen to secure your password using lower characters"
+  //   );
+  // } else {
+  //   window.alert(
+  //     "We understand you would not like to include lowercase characters"
+  //   );
+  // }
+
+  // // prompt user if they would like to include numeric values.
+  // var confirmNumber = window.confirm(
+  //   "Would you like to include numeric values for your password?"
+  // );
+  // if (confirmNumber) {
+  //   window.alert(
+  //     "You have chosen to secure your password using numeric characters"
+  //   );
+  // } else {
+  //   window.alert(
+  //     "We understand you would not like to include numeric characters"
+  //   );
+  // }
 
   // Error handling, if user refused all criteria.
   if (!confirmSpecial && !confirmUpper && !confirmLower && !confirmNumber) {
     window.alert("You did not choose a criteria. Please Try again later.");
     return false;
   }
-   
+
   // object to hold password criteria values.
-    var passwordCriteria = {
-      len: passLength,
-      special: confirmSpecial,
-      upper: confirmUpper,
-      lower: confirmLower,
-      numeric: confirmNumber
-    };
-    return(passwordCriteria);   
-}
+  var passwordCriteria = {
+    len: passLength,
+    special: confirmSpecial,
+    upper: confirmUpper,
+    lower: confirmLower,
+    numeric: confirmNumber,
+  };
+  return passwordCriteria;
+};
 
 // Function that returns the index of the maximum number in an array
-var indexOfMax = function(arr) {
+var indexOfMax = function (arr) {
   // check if array is empty.
   if (arr.length === 0) {
-      return false;
+    return false;
   }
   // set the max value to 1st index and max index to 1st index
   var max = arr[0];
@@ -72,27 +104,27 @@ var indexOfMax = function(arr) {
 
   // Loop through array until a larger number appears, if so set it as new max value and new max index.
   for (var i = 1; i < arr.length; i++) {
-      if (arr[i] > max) {
-          maxIndex = i;
-          max = arr[i];
-      }
+    if (arr[i] > max) {
+      maxIndex = i;
+      max = arr[i];
+    }
   }
   return maxIndex;
-}
+};
 
 // function that returns a random value within an array
-var pickRandomChar = function(arr) {
+var pickRandomChar = function (arr) {
   // create a random number between 0 and 1, multiply that number by the length of the array - 1 (for 0 indexing array), then round to nearest integer (low bound).
-  var randomIndex = Math.floor(Math.random()*(arr.length - 1));
+  var randomIndex = Math.floor(Math.random() * (arr.length - 1));
 
   // retrieve the value of array at index used from above.
   var randomChar = arr[randomIndex];
 
-  return (randomChar);
-}
+  return randomChar;
+};
 
 // function that returns an array of randomized numbers
-var randomizeArray = function(charTypeFreq) {
+var randomizeArray = function (charTypeFreq) {
   // Obtain attributes that hold frequency of character usage in password
   numSpecial = charTypeFreq.special;
   numUpper = charTypeFreq.upper;
@@ -102,33 +134,116 @@ var randomizeArray = function(charTypeFreq) {
   // array that holds randomized numbers times the character weight
   // character weight = (1/frequency)
   charTypeWeights = [
-    Math.random()*(1/numSpecial), 
-    Math.random()*(1/numUpper),
-    Math.random()*(1/numLower),
-    Math.random()*(1/numNumeric),
-  ];  
+    Math.random() * (1 / numSpecial),
+    Math.random() * (1 / numUpper),
+    Math.random() * (1 / numLower),
+    Math.random() * (1 / numNumeric),
+  ];
 
-  return(charTypeWeights);
-}
+  return charTypeWeights;
+};
 
 // Password scrambler. Taking inputs of all prompts, and return a randomized string of associated characters
-var passwordScrambler = function(passwordCriteria) {
-
+var passwordScrambler = function (passwordCriteria) {
   // List of Special characters
-  var specialChar = ["`", "~", "!","@","#","$", "%", "^", "&", "*", "(", ")","-","_","+","=",",","<",".",">","/","?",";",":","'","{","[","]","}", "\\","|"];
-  
+  var specialChar = [
+    "`",
+    "~",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "-",
+    "_",
+    "+",
+    "=",
+    ",",
+    "<",
+    ".",
+    ">",
+    "/",
+    "?",
+    ";",
+    ":",
+    "'",
+    "{",
+    "[",
+    "]",
+    "}",
+    "\\",
+    "|",
+  ];
   // List of lowercase characters
-  var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r","s","t","u","v","w","x","y","z"];
-
+  var lowercaseChar = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
   // List of uppercase characters
-  var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R","S","T","U","V","W","X","Y","Z"];
+  var uppercaseChar = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
 
   // Object with counters for frequency of character type usage
   var charTypeFreq = {
     special: 1,
     upper: 1,
     lower: 1,
-    numeric: 1
+    numeric: 1,
   };
 
   // Initialize empty password for usage
@@ -139,36 +254,36 @@ var passwordScrambler = function(passwordCriteria) {
   // Loop while the password is less than the minimum length user is prompted for
   while (password.length < passwordCriteria.len) {
     // weighted array for character types
-    charTypeWeights = randomizeArray(charTypeFreq); 
+    charTypeWeights = randomizeArray(charTypeFreq);
 
     // obtain index of max weight (winner)
     var index = indexOfMax(charTypeWeights);
-    
+
     // Check if 'winning' index is 0
     if (index === 0) {
       // check if user wants special characters, if so increment frequency by 2 and select a random character from list of special characters
       if (passwordCriteria.special) {
-        charTypeFreq.special+= 2;
+        charTypeFreq.special += 2;
         char = pickRandomChar(specialChar);
       } else {
         continue;
       }
-    } 
+    }
     // Check if 'winning' index is 1
     if (index === 1) {
       // check if user wants uppercase characters, if so increment frequency by 2 and select a random character from list of uppercase characters
       if (passwordCriteria.upper) {
-        charTypeFreq.upper+= 2;
+        charTypeFreq.upper += 2;
         char = pickRandomChar(uppercaseChar);
       } else {
         continue;
-      } 
+      }
     }
     // Check if 'winning' index is 2
     if (index === 2) {
       // check if user wants lowercase characters, if so increment frequency by 2 and select a random character from list of lowercase characters
       if (passwordCriteria.lower) {
-        charTypeFreq.lower+= 2;
+        charTypeFreq.lower += 2;
         char = pickRandomChar(lowercaseChar);
       } else {
         continue;
@@ -178,27 +293,26 @@ var passwordScrambler = function(passwordCriteria) {
     if (index === 3) {
       // check if user wants numeric characters, if so increment frequency by 2 and select a random number from 0 to 9.
       if (passwordCriteria.numeric) {
-        charTypeFreq.numeric+= 2;
-        char = Math.floor(Math.random()*9);
+        charTypeFreq.numeric += 2;
+        char = Math.floor(Math.random() * 9);
       } else {
         continue;
       }
-    } 
-    
+    }
+
     password = password.concat(char);
   }
-    return (password);
-}
+  return password;
+};
 
-var generatePassword = function() {
+var generatePassword = function () {
   // Get password criteria from user prompts.
-  var passwordCriteria = criteria();
-  
+  var passwordCriteria = localStorage.getItem("pw-criteria");
   // 'Scramble' a password, returns randomized set of characters
-  password = passwordScrambler(passwordCriteria);
+  password = passwordScrambler(JSON.parse(passwordCriteria));
 
-  return(password);
-}
+  return password;
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -213,3 +327,92 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// create passworld length option selectors from 8-128
+const passwordLengthElement = document.querySelector("#pw-length");
+for (let i = 8; i <= 128; i++) {
+  const optionElement = document.createElement("option");
+  optionElement.setAttribute("id", `pw-length-${i}`);
+  optionElement.value = i;
+  optionElement.textContent = i;
+  passwordLengthElement.appendChild(optionElement);
+}
+
+const handleDropdownMenu = () => {
+  const dropdownMenuElement = document.querySelector(".dropdown-content");
+  if (dropdownMenuElement.classList.contains("show")) {
+    dropdownMenuElement.classList.remove("show");
+  } else {
+    dropdownMenuElement.classList.add("show");
+  }
+};
+
+const passwordCriteriaSave = document.querySelector("#pw-criteria");
+passwordCriteriaSave.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const criteria = new PasswordCriteria();
+  const data = new FormData(passwordCriteriaSave);
+
+  const passwordLength = document.querySelector("#pw-length").value;
+  criteria.setLength(passwordLength);
+
+  for (const [name, value] of data) {
+    const id = name.split("pw-")[1].toLowerCase();
+    switch (id) {
+      case "special":
+        criteria.setSpecial(value);
+      case "uppercase":
+        criteria.setUppercase(value);
+      case "lowercase":
+        criteria.setLowercase(value);
+      case "numerical":
+        criteria.setNumerical(value);
+    }
+  }
+  localStorage.setItem("pw-criteria", JSON.stringify(criteria));
+});
+
+class PasswordCriteria {
+  length;
+  special;
+  uppercase;
+  lowercase;
+  numerical;
+  constructor(length, special, uppercase, lowercase, numerical) {
+    this.len = length;
+    this.special = special;
+    this.upper = uppercase;
+    this.lower = lowercase;
+    this.numeric = numerical;
+  }
+  getLength() {
+    return this.len;
+  }
+  getSpecial() {
+    return this.special;
+  }
+  getUppercase() {
+    return this.upper;
+  }
+  getLowercase() {
+    return this.lower;
+  }
+  getNumerical() {
+    return this.numeric;
+  }
+  setLength(length) {
+    this.len = length;
+  }
+  setSpecial(special) {
+    this.special = special;
+  }
+  setUppercase(uppercase) {
+    this.upper = uppercase;
+  }
+  setLowercase(lowercase) {
+    this.lower = lowercase;
+  }
+  setNumerical(numerical) {
+    this.numeric = numerical;
+  }
+}

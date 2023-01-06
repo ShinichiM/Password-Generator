@@ -14,11 +14,105 @@
       </header>
       <div class="card">
         <div class="card-header">
-          <h2>Generate a Password</h2>
+          <div class="display-flex">
+            <h4 class="margin-0">Generate a Password</h4>
+            <button
+              onclick="handleDropdownMenu()"
+              class="dropdown-btn"
+              id="pw-criteria-expand"
+            >
+              Password Criteria
+            </button>
+          </div>
+          <!-- Password cpomplexity selection start -->
+          <div class="dropdown">
+            <form class="dropdown-content" id="pw-criteria">
+              <fieldset id="pw-length-select">
+                <label for="pw-length">Password Length: </label>
+                <select id="pw-length"></select>
+              </fieldset>
+              <fieldset id="pw-special">
+                <span>Include Special Characers?</span>
+                <label for="pw-special-yes">Yes: </label>
+                <input
+                  type="radio"
+                  value="true"
+                  name="pw-special"
+                  id="pw-special-yes"
+                />
+                <label for="pw-special-no">No: </label>
+                <input
+                  type="radio"
+                  value="false"
+                  checked="checked"
+                  name="pw-special"
+                  id="pw-special-no"
+                />
+              </fieldset>
+              <fieldset id="pw-uppercase">
+                <span>Include Uppercase Characters?</span>
+                <label for="pw-uppercase-yes">Yes: </label>
+                <input
+                  type="radio"
+                  value="true"
+                  name="pw-uppercase"
+                  id="pw-uppercase-yes"
+                />
+                <label for="pw-special-no">No: </label>
+                <input
+                  type="radio"
+                  value="false"
+                  checked="checked"
+                  name="pw-uppercase"
+                  id="pw-uppercase-no"
+                />
+              </fieldset>
+
+              <fieldset id="pw-lowercase">
+                <span>Include Lowercase Characters?</span>
+                <label for="pw-lowercase-yes">Yes: </label>
+                <input
+                  type="radio"
+                  value="true"
+                  name="pw-lowercase"
+                  id="pw-uppercase-yes"
+                />
+                <label for="pw-lowercase-no">No: </label>
+                <input
+                  type="radio"
+                  value="false"
+                  checked="checked"
+                  name="pw-lowercase"
+                  id="pw-lowercase-no"
+                />
+              </fieldset>
+
+              <fieldset id="pw-numerical">
+                <span>Include Numerical Characters?</span>
+                <label for="pw-numerical-yes">Yes: </label>
+                <input
+                  type="radio"
+                  value="true"
+                  name="pw-numerical"
+                  id="pw-numericle-yes"
+                />
+                <label for="pw-numerical-no">No: </label>
+                <input
+                  type="radio"
+                  value="false"
+                  checked="checked"
+                  name="pw-numerical"
+                  id="pw-numerical-no"
+                />
+              </fieldset>
+              <button type="submit" class="">Save</button>
+            </form>
+          </div>
+          <!-- Password complexity selection end -->
         </div>
         <div class="card-body">
           <textarea
-          readonly
+            readonly
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"

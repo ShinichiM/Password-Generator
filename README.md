@@ -1,4 +1,5 @@
-# Password Generator
+## Password Generator
+```
 An employee would like to create a secure password but does not want to think of their own. That's where we come in. This is the password generator.
 
 The password generator will generate a randomized string of characters to set as your new password!
@@ -6,7 +7,7 @@ The password generator will generate a randomized string of characters to set as
 The user can specify their own password constraints: password length, use of special characters, use of uppercase characters, user of lowercase characters, and numerical values.
 
 You can give it a test run here! https://shinichim.github.io/Password-Generator/
-
+```
 Somethings that were refactored and key points of the password generator.
 - Refactored code now supports object key/value pair manipulation whose source is derived from user input at prompt. This can be seen in the criteria() function.
 
