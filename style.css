@@ -103,13 +103,13 @@ button[disabled] {
   float: right;
 }
 .dropdown-btn {
-  background-color: hsl(360, 91%, 36%);
-  color: white;
-  line-height: 2rem;
-  cursor: pointer;
+  background-color: hsl(360, 91%, 36%) !important;
+  color: white !important;
+  line-height: 2rem !important;
+  cursor: pointer !important;
 }
 .dropdown-btn:hover {
-  background-color: hsl(360, 50%, 60%);
+  background-color: hsl(360, 50%, 60%) !important;
 }
 .dropdown {
   position: relative;
@@ -118,11 +118,12 @@ button[disabled] {
   margin: 0;
 }
 .dropdown-content {
-  display: none;
+  display: none !important;
 }
 .show {
-  display: block
+  display: block !important;
 }
+
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
