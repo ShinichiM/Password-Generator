@@ -16,11 +16,7 @@
         <div class="card-header">
           <div class="display-flex">
             <h4 class="margin-0">Generate a Password</h4>
-            <button
-              onclick="handleDropdownMenu()"
-              class="dropdown-btn"
-              id="pw-criteria-expand"
-            >
+            <button class="dropdown-btn" id="pw-criteria-expand">
               Password Criteria
             </button>
           </div>
@@ -74,6 +70,7 @@
                 <input
                   type="radio"
                   value="true"
+                  checked="checked"
                   name="pw-lowercase"
                   id="pw-uppercase-yes"
                 />
@@ -81,7 +78,6 @@
                 <input
                   type="radio"
                   value="false"
-                  checked="checked"
                   name="pw-lowercase"
                   id="pw-lowercase-no"
                 />
@@ -123,6 +119,7 @@
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="Password.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
