@@ -1,9 +1,4 @@
 export class Password {
-  length;
-  special;
-  uppercase;
-  lowercase;
-  numerical;
   specialChar = [
     "`",
     "~",
@@ -168,7 +163,6 @@ export class Password {
       Math.random() * (1 / numLower),
       Math.random() * (1 / numNumeric),
     ];
-
     return charTypeWeights;
   }
 
@@ -185,7 +179,6 @@ export class Password {
     while (password.length < this.len) {
       if (!this.uppercase && !this.special && !this.numeric) {
         char = this.pickRandomChar(this.lowercaseChar);
-        console.log(char);
         password = password.concat(char);
         continue;
       }
@@ -194,33 +187,37 @@ export class Password {
       const index = this.indexOfMax(charTypeWeights);
       switch (index) {
         case 0:
-          if (this.special) {
+          if (this.special === "true") {
             charTypeFreq.special += 2;
             char = this.pickRandomChar(this.specialChar);
+            password = password.concat(char);
           }
           break;
         case 1:
-          if (this.upper) {
+          if (this.upper === "true") {
             charTypeFreq.upper += 2;
             char = this.pickRandomChar(this.uppercaseChar);
+            password = password.concat(char);
           }
           break;
         case 2:
-          if (this.lower) {
+          if (this.lower === "true") {
             charTypeFreq.lower += 2;
             char = this.pickRandomChar(this.lowercaseChar);
-            console.log(char);
+            password = password.concat(char);
           }
           break;
         case 3:
-          if (this.numeric) {
+          if (this.numeric === "true") {
             charTypeFreq.numeric += 2;
             char = Math.floor(Math.random() * 9);
+            password = password.concat(char);
           }
           break;
       }
-      password = password.concat(char);
     }
     return password;
   }
+
+  passwordStrengthByDictionary() {}
 }

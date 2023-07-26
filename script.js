@@ -1,7 +1,12 @@
 import { Password } from "./Password.js";
 
-
 const password = new Password(8, false, false, true, false);
+localStorage.setItem("password-criteria", {
+  special: password.getSpecial(),
+  uppercase: password.getUppercase(),
+  lowercase: password.getLowercase(),
+  numerical: password.getNumerical(),
+});
 
 function handleDropdownMenu() {
   const dropdownMenuElement = document.querySelector(".dropdown-content");
@@ -51,7 +56,6 @@ passwordCriteria.addEventListener("submit", (event) => {
     }
   }
 });
-
 
 const passwordCriteriaExpand = document.querySelector("#pw-criteria-expand");
 passwordCriteriaExpand.addEventListener("click", handleDropdownMenu);
